@@ -5,26 +5,76 @@ class Produto {
     private $preco;
     private $estoque;
 
-    //construtor
-    public function construtor ( $nome, $marca, $preco, $estoque){
+    // Construtor
+    public function __construct($nome, $marca, $preco, $estoque){
         $this->nome = $nome;
         $this->marca = $marca;
         $this->preco = $preco;
         $this->estoque = $estoque;
+    }
 
-    //metodos
+    // Métodos
     public function exibirInfo(){
-        return "Nome: $this->nome \n
-        Marca: $this->marca\n
-        Preco: $this->preco\n
-        Estoque: $this->estoque\n
-        ";
+        return "Nome: $this->nome <br>
+        Marca: $this->marca <br>
+        Preço: R$ $this->preco <br>
+        Estoque: $this->estoque <br><br>";
+    }
+
     public function addEstoque(){
-        return "Voce esta adicionando um produto ao estoque!";
+        $this->estoque++;
+        return "Você adicionou um produto ao estoque! <br> Estoque atual: $this->estoque <br><br>";
     }
 
+    public function deleteEstoque(){
+        if($this->estoque > 0){
+            $this->estoque--;
+            return "Você retirou um produto do estoque! <br> Estoque atual: $this->estoque <br><br>";
+        } else {
+            return "O estoque está vazio<br><br>";
+        }
     }
 
+    // Getters
+    public function getNome(){
+        return $this->nome;
+    }
+
+    public function getMarca(){
+        return $this->marca;
+    }
+
+    public function getPreco(){
+        return $this->preco;
+    }
+
+    public function getEstoque(){
+        return $this->estoque;
+    }
+
+    // Setters
+    public function setNome($nome){
+        $this->nome = $nome;
+    }
+
+    public function setMarca($marca){
+        $this->marca = $marca;
+    }
+
+    public function setPreco($preco){
+        if($preco > 0){
+            $this->preco = $preco;
+        } else {
+            echo "Preço inválido<br>";
+        }
+    }
+
+    public function setEstoque($estoque){
+        if($estoque >= 0){
+            $this->estoque = $estoque;
+        } else {
+            echo "Estoque inválido<br>";
+        }
     }
 }
 ?>
